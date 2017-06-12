@@ -12,7 +12,7 @@
 ```bash
 git clone https://github.com/MartinNey/se-draw-balls.git
 cd se-draw-balls
-pyvenv .venv
+virtualenv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
 python main.py
