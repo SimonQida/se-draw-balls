@@ -9,6 +9,8 @@ from scipy.optimize import fsolve
 # import sympy
 
 NEARLY_ZERO = 0.001
+
+LOG_LEVEL = 0
 ''' this is an example on what scipy can do
 
 from scipy.optimize import fsolve
@@ -28,7 +30,7 @@ def main():
 class Restriction(object):
     """Restriction"""
     def __init__(self):
-        super()
+        super(Restriction, self).__init__()
     def is_valid(self, circle):
         return True
 
@@ -177,7 +179,8 @@ def calculate(length, circles, restrictions):
                 for single_restriction in restriction:
                     valid = single_restriction.is_valid(circle)
                     if not valid:
-                        print(single_restriction.dictify(), valid, circle.dictify())
+                        if LOG_LEVEL > 0:
+                            print(single_restriction.dictify(), valid, circle.dictify())
                         all_valid = False
                         break
                 if circle.radius >= the_max_circle.radius and all_valid:
