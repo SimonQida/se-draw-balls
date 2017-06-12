@@ -1,9 +1,10 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
 from common import Point_2D, Point_3D, Circle, Ball, Coordinate, combination_traversal
 from calculate_2d import calculate_2d
 from calculate_3d import calculate_3d
+import turtle
 
 def main():
     """
@@ -32,6 +33,25 @@ def main():
     ]
     circles, restrictions = calculate_2d(12, circles, restrictions_2d, real_time_callback=lambda circle: print(circle.dictify()))
 
+def plot(result):
+    turtle.penup()
+    turtle.goto(0, 300)
+    turtle.pendown()
+    turtle.forward(300)
+    turtle.right(90)
+    turtle.forward(300)
+    turtle.right(90)
+    turtle.forward(300)
+    turtle.right(90)
+    turtle.forward(300)
+    turtle.right(90)
+    turtle.penup()
+    for item in result:
+        turtle.penup()
+        turtle.goto(item.center.x*1.5, (item.center.y-item.radius)*1.5)
+        turtle.pendown()
+        turtle.circle(item.radius*1.5)
+    turtle.exitonclick()
 if __name__ == "__main__":
     main()
 
