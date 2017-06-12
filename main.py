@@ -9,6 +9,7 @@ def main():
     """
     example on how all these work
     """
+
     balls = []
     restrictions_3d = [
         Point_3D({ 'x': 40, 'y': 100, 'z': 40 }),
@@ -19,12 +20,9 @@ def main():
         Coordinate('z', border=0, is_max=False),
         Coordinate('z', border=200, is_max=True),
     ]
-    balls, restrictions = calculate_3d(12, balls, restrictions_3d)
-    for ball in balls:
-        # print(ball.center.distant_to_pow({ 'x': 40, 'y': 100, 'z': 40 }), ball.radius**2)
-        print(ball.dictify())
+    balls, restrictions = calculate_3d(12, balls, restrictions_3d, real_time_callback=lambda ball: print(ball.dictify()))
 
-    print()
+    circles = []
     restrictions_2d = [
         Point_2D({ 'x': 40, 'y': 100 }),
         Coordinate('x', border=0, is_max=False),
@@ -32,11 +30,7 @@ def main():
         Coordinate('y', border=0, is_max=False),
         Coordinate('y', border=200, is_max=True),
     ]
-    circles = []
-    circles, restrictions = calculate_2d(12, circles, restrictions_2d)
-    for circle in circles:
-        # print(ball.center.distant_to_pow({ 'x': 40, 'y': 100, 'z': 40 }), ball.radius**2)
-        print(circle.dictify())
+    circles, restrictions = calculate_2d(12, circles, restrictions_2d, real_time_callback=lambda circle: print(circle.dictify()))
 
 if __name__ == "__main__":
     main()

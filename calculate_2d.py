@@ -6,7 +6,7 @@ from scipy.optimize import fsolve
 
 LOG_LEVEL = 0
 
-def calculate_2d(length, circles, restrictions):
+def calculate_2d(length, circles, restrictions, real_time_callback=lambda x: x):
     def max_circle(restriction):
         # TODO:this should be saved in each restriction for less calculation
         # but I don't want to do this
@@ -57,10 +57,11 @@ def calculate_2d(length, circles, restrictions):
         return circles, restrictions
 
     the_max_circle = max_circle(restrictions)
+    real_time_callback(the_max_circle)
     circles.append(the_max_circle)
 
     # put the largest circle at [0]
     restrictions.insert(0, the_max_circle)
 
-    return calculate_2d(length, circles, restrictions)
+    return calculate_2d(length, circles, restrictions, real_time_callback)
 

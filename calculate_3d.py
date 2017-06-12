@@ -6,7 +6,7 @@ from scipy.optimize import fsolve
 
 LOG_LEVEL = 0
 
-def calculate_3d(length, balls, restrictions):
+def calculate_3d(length, balls, restrictions, real_time_callback=lambda x: x):
     def max_ball(restriction):
         # TODO:this should be saved in each restriction for less calculation
         # but I don't want to do this
@@ -58,10 +58,11 @@ def calculate_3d(length, balls, restrictions):
         return balls, restrictions
 
     the_max_ball = max_ball(restrictions)
+    real_time_callback(the_max_ball)
     balls.append(the_max_ball)
 
     # put the largest ball at [0]
     restrictions.insert(0, the_max_ball)
 
-    return calculate_3d(length, balls, restrictions)
+    return calculate_3d(length, balls, restrictions, real_time_callback)
 
