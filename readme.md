@@ -49,11 +49,12 @@ python main.py
 ## 测试用例
 
 ```python
-    # 带了障碍点的情况
+    # 仅为说明测试用例，实际代码稍有不同
+    # 带了障碍点的情况
     restrictions_3d = [
         Point_3D({ 'x': 40, 'y': 100, 'z': 40 }),
-        Coordinate('x', border=0, is_max=False),
-        Coordinate('x', border=200, is_max=True),
+        Coordinate('x', border=0, is_max=False),# is_max 意思是，该边界是否代表上限，假则说明这个代表下限
+        Coordinate('x', border=200, is_max=True),
         Coordinate('y', border=0, is_max=False),
         Coordinate('y', border=200, is_max=True),
         Coordinate('z', border=0, is_max=False),
@@ -62,15 +63,16 @@ python main.py
     # n 为10，24
     balls, restrictions = calculate_3d(n, balls, restrictions_3d, real_time_callback=lambda ball: print(ball.dictify()))
     # 没带障碍点的情况
-        restrictions_2d = [
-        Point_2D({ 'x': 40, 'y': 100 }),
+    restrictions_3d = [
         Coordinate('x', border=0, is_max=False),
         Coordinate('x', border=200, is_max=True),
         Coordinate('y', border=0, is_max=False),
         Coordinate('y', border=200, is_max=True),
+        Coordinate('z', border=0, is_max=False),
+        Coordinate('z', border=200, is_max=True),
     ]
-    # n 为10，24，50
-    circles, restrictions = calculate_2d(n, circles, restrictions_2d, real_time_callback=lambda circle: print(circle.dictify()))
+    # n 为10，24, 50
+    balls, restrictions = calculate_3d(n, balls, restrictions_3d, real_time_callback=lambda ball: print(ball.dictify()))
 ```
 
 ## 代码
