@@ -25,7 +25,7 @@ def main():
     ]
     def print_dictified(ele): print(ele.dictify())
     # print can't put in lambda anymore in python2
-    balls, restrictions = calculate_3d(30, balls, restrictions_3d, real_time_callback=print_dictified)
+    balls, restrictions = calculate_3d(20, balls, restrictions_3d, real_time_callback=print_dictified)
 
     exportToJson([ball.dictify() for ball in balls], './json-exports/3d.json')
 

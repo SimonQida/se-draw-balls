@@ -1,4 +1,3 @@
-
 var getJSON = function(url, callback) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
@@ -89,9 +88,7 @@ var init = function(balls) {
         side: THREE.DoubleSide,
         shading: THREE.FlatShading
       } )
-
     ) );
-    
   })
 
   scene.add( mesh );
